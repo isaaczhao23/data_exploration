@@ -1,9 +1,9 @@
 # Correlation matrix
 Arguments: 
-- cor.method      Change correlation method. Can be "spearman" or "pearson". Default cor.method="spearman"
-- size            Change size of text. Default size=1
-- log.transform   Choose to make all numeric columns log transformed. Can be TRUE or FALSE. Default log.transform=FALSE.
-- group           Choose to color scatterplot by a categorical variable. Put categorical variable name inside quotes. Defalt group=NULL
+- cor.method:      Change correlation method. Can be "spearman" or "pearson". Default cor.method="spearman"
+- size:            Change size of text. Default size=1
+- log.transform:   Choose to make all numeric columns log transformed. Can be TRUE or FALSE. Default log.transform=FALSE.
+- group:           Choose to color scatterplot by a categorical variable. Put categorical variable name inside quotes. Defalt group=NULL
 
 ## Example:
 custom_cormatrix(iris, cor.method="spearman", size=0.5, log.transform=FALSE, group ="Species")
