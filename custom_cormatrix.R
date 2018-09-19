@@ -1,8 +1,4 @@
-
-
-#source("custom_cormatrix.R")  # use to load this function
-
-custom_cormatrix = function(data, cor.method = "spearman",log.transform=FALSE,size=1){
+custom_cormatrix = function(data, cor.method = "spearman",size=1,log.transform=FALSE,group=NULL){
 	
 	check_packages = function(names){
     for(name in names){
@@ -66,12 +62,22 @@ panel.cor <- function(x, y, digits=2, cex.cor){
 }
 
 # makes scatterplot
+if (is.null(group)){
 panel.smooth<-function (x, y, col = "black", bg = NA, pch = 19, cex = 1.2, col.smooth = "blue", span = 2/3, iter = 3, ...) {
   points(x, y, pch = pch, col = col, bg = bg, cex = cex)
   ok <- is.finite(x) & is.finite(y)
   if (any(ok)) 
     lines(stats::lowess(x[ok], y[ok], f = span, iter = iter), lwd=2.5, 
           col = col.smooth, ...)}
+}else{
+	panel.smooth<-function (x, y, col = data[,group], bg = NA, pch = 19, cex = 1.2, col.smooth = "blue", span = 2/3, iter = 3, ...) {
+  points(x, y, pch = pch, col = col, bg = bg, cex = cex)
+  ok <- is.finite(x) & is.finite(y)
+  if (any(ok)) 
+    lines(stats::lowess(x[ok], y[ok], f = span, iter = iter), lwd=2.5, 
+          col = col.smooth, ...)}
+}
+	
 
 # makes histogram
 panel.hist <- function(x, ...){
